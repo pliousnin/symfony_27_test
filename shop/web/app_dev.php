@@ -7,13 +7,35 @@ use Symfony\Component\HttpFoundation\Request;
 // read https://symfony.com/doc/current/setup.html#checking-symfony-application-configuration-and-setup
 // for more information
 //umask(0000);
+// Determine Client IP address
+
+$clientIp = null;
+$ipHeaders = [
+    'X_FORWARDED_FOR',
+    'HTTP_X_FORWARDED_FOR',
+    'REMOTE_ADDR',
+];
+
+foreach ($ipHeaders as $header) {
+    if (!empty($_SERVER[$header])) {
+        $clientIp = $_SERVER[$header];
+        break;
+    }
+}
+var_dump($clientIp);die;
+$accessGranted = false;
+foreach ([
+ '((10\.\d{1,3})|(192\.168)|(172\.((1[6-9])|(2\d)|(3[01]))))\.\d{1,3}.\d{1,3}', // RFC 1918 private IP addresses https://tools.ietf.org/html/rfc1918#section-3
+] as $pattern) {
+    if (preg_match(sprintf('#^%s$#', $pattern), $clientIp)) {
+        $accessGranted = true;
+        break;
+    }
+}
 
 // This check prevents access to debug front controllers that are deployed by accident to production servers.
 // Feel free to remove this, extend it, or make something more sophisticated.
-if (isset($_SERVER['HTTP_CLIENT_IP'])
-    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-    || !(in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'), true) || PHP_SAPI === 'cli-server')
-) {
+if (!$accessGranted) {
     header('HTTP/1.0 403 Forbidden');
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
