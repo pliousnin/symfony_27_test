@@ -22,7 +22,7 @@ foreach ($ipHeaders as $header) {
         break;
     }
 }
-var_dump($clientIp);die;
+
 $accessGranted = false;
 foreach ([
  '((10\.\d{1,3})|(192\.168)|(172\.((1[6-9])|(2\d)|(3[01]))))\.\d{1,3}.\d{1,3}', // RFC 1918 private IP addresses https://tools.ietf.org/html/rfc1918#section-3
