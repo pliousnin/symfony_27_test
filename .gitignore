@@ -1,0 +1,19 @@
+/.idea/
+composer.phar
+.env
+
+# Docker
+/docker/mysql/lib/
+
+# Symfony
+/shop/web/bundles/
+/shop/app/bootstrap.php.cache
+/shop/app/cache/*
+/shop/app/config/parameters.yml
+/shop/app/logs/*
+/shop/app/phpunit.xml
+/shop/build/
+/shop/vendor/
+/shop/bin/
+
+!.gitkeep
