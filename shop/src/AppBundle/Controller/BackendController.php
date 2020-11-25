@@ -7,10 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController2 extends Controller
+class BackendController extends Controller
 {
     /**
-     * @Route("/2", name="homepage")
+     * @Route("/backend", name="backend")
      */
     public function indexAction(Request $request)
     {
