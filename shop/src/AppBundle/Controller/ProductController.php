@@ -7,17 +7,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class BackendController extends Controller
+class ProductController extends Controller
 {
     /**
-     * @Route("/backend", name="backend")
+     * @Route("/product/{id}", name="product")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id = 0)
     {
         // replace this example code with whatever you need
-
-        return $this->render('backend/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
+        if ($id === 0) $id++;
+        return $this->render('product/index.html.twig', [
+            'id' => $id
+        ]);
     }
 }
