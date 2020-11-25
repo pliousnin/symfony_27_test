@@ -1,6 +1,7 @@
 /.idea/
 composer.phar
 .env
+.DS_Store
 
 # Docker
 /docker/mysql/lib/
