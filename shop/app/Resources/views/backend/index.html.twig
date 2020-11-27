@@ -2,12 +2,51 @@
 
 {% block body %}
 
+
     <div class="jumbotron">
-        <h1 class="display-4">Hello, Backend!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <h1 class="display-4">Produkte</h1>
+        <div class="row alert alert-dark margin__tb__8 sticky-top top__56">
+            <div class="col-1">
+                Id
+            </div>
+            <div class="col-2">
+                Image
+            </div>
+            <div class="col-2">
+                Produktname
+            </div>
+            <div class="col-3">
+                Beschreibung
+            </div>
+            <div class="col-2">
+                Marke
+            </div>
+            <div class="col-2">
+                Preis
+            </div>
+        </div>
+        {% for product in products %}
+            <div class="row alert alert-success margin__tb__8">
+                <div class="col-1">
+                    {{ product.id }}
+                </div>
+                <div class="col-2">
+                    <img src="{{ product.image }}" style="max-width: 100%">
+                </div>
+                <div class="col-2">
+                    {{ product.name }}
+                </div>
+                <div class="col-3">
+                    {{ product.description }}
+                </div>
+                <div class="col-2">
+                    {{ product.brand }}
+                </div>
+                <div class="col-2">
+                    {{ product.price }}
+                </div>
+            </div>
+        {% endfor %}
     </div>
     {{ form(form) }}
 

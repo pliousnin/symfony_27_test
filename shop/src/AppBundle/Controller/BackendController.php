@@ -16,6 +16,10 @@ class BackendController extends Controller
     public function indexAction(Request $request)
     {
         $product = new Product;
+        $entityManager = $this->getDoctrine()->getManager();
+        $products = $entityManager->getRepository(Product::class)
+            ->findAll();
+
         $productType = new ProductType;
         $form = $this->createForm($productType, $product);
 
@@ -38,6 +42,7 @@ class BackendController extends Controller
         return $this->render('backend/index.html.twig', array(
             #'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'form' => $form->createView(),
+            'products' => $products,
         ));
     }
 
