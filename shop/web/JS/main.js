@@ -2,9 +2,14 @@
 
 require('Alert.js');
 const A = new Alert;
+require('AjaxRequest.js');
+const Ajax = new AjaxRequest;
 
-A.alert('test');
 
+$("#gen__100").click(function(){
+    A.alert('Bin dabei.');
+    Ajax.json('backendajax');
+});
 
 function require(script) {
     $.ajax({

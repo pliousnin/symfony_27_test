@@ -4,8 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Product;
 use AppBundle\Form\ProductType;
+use http\Env\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class BackendController extends Controller
@@ -43,6 +45,16 @@ class BackendController extends Controller
             #'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'form' => $form->createView(),
             'products' => $products,
+        ));
+    }
+    /**
+     * @Route("/backendajax", name="backendajax")
+     */
+    public function ajaxResponse(Request $request){
+        #var_dump('test');die();
+        return new \Symfony\Component\HttpFoundation\Response('hallo');
+        return new JsonResponse(array(
+            'test' => 'hallo',
         ));
     }
 
