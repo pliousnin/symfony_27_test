@@ -8,7 +8,7 @@ const Ajax = new AjaxRequest;
 
 $("#gen__100").click(function(){
     A.alert('Bin dabei.');
-    Ajax.json('backendajax');
+    Ajax.json('gen__100');
 });
 
 function require(script) {

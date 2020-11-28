@@ -47,16 +47,6 @@ class BackendController extends Controller
             'products' => $products,
         ));
     }
-    /**
-     * @Route("/backendajax", name="backendajax")
-     */
-    public function ajaxResponse(Request $request){
-        #var_dump('test');die();
-        return new \Symfony\Component\HttpFoundation\Response('hallo');
-        return new JsonResponse(array(
-            'test' => 'hallo',
-        ));
-    }
 
     /**
      * @Route("/backend2", name="backend2")
