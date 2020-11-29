@@ -1,6 +1,8 @@
 <?php
-
 namespace AppBundle\Controller;
+
+include_once '../src/AppBundle/Helper/ProductHelper.php';
+use AppBundle\Helper\ProductHelper;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,8 +22,9 @@ class AjaxController extends Controller
         }
         $action = $request->get('action');
 
-        $product = $this->container->get('product.helper');
-        return new JsonResponse($product->dosomething());
+//        $product = $this->container->get('product.helper');
+        $product = new ProductHelper();
+        return new JsonResponse($product->genProducts());
     }
 
 
