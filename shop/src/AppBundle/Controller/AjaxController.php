@@ -22,8 +22,8 @@ class AjaxController extends Controller
         }
         $action = $request->get('action');
 
-//        $product = $this->container->get('product.helper');
-        $product = new ProductHelper();
+        $product = $this->container->get('product.helper');
+//        $product = new ProductHelper();
         return new JsonResponse($product->genProducts());
     }
 

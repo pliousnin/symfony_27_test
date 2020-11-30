@@ -4,7 +4,7 @@ namespace AppBundle\Helper;
 
 abstract class BaseHelper
 {
-    private $entityManager;
+    protected $entityManager;
 //    private $container;
 
 
@@ -13,9 +13,5 @@ abstract class BaseHelper
     {
         $this->entityManager = $em;
 //        $this->container = $container;
-    }
-    public function __destruct()
-    {
-//        $this->entityManager->flush();
     }
 }

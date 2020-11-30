@@ -10,9 +10,10 @@ class ProductHelper extends BaseHelper
 
     public function genProducts()
     {
-        for ($i=0; $i<1; $i++){
+        for ($i=0; $i<100; $i++){
             $this->genProduct();
         }
+        $this->entityManager->flush();
         return array('success' => 'true');
     }
     public function genProduct()
@@ -23,8 +24,7 @@ class ProductHelper extends BaseHelper
         $product->setDescription($this->getRandomDescription());
         $product->setImage($this->getRandomImage());
         $product->setPrice($this->getRandomPrice());
-        var_dump($product);die();
-//        $this->entityManager->persist($product);
+        $this->entityManager->persist($product);
     }
     public function getRandomBrand(){
         $brand = array();
