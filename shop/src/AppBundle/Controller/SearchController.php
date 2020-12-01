@@ -18,9 +18,11 @@ class SearchController extends Controller
             return $this->redirect('/');
         }
 
-        $ajax = $this->container->get('app.search_helper');
+        $search = $this->container->get('app.search_helper');
+        $q = $request->get('q');
 
+        $response = $search->searchProducts($q);
 
-        return new JsonResponse();
+        return new JsonResponse($response);
     }
 }

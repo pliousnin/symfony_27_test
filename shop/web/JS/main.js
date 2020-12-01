@@ -7,7 +7,7 @@ const Ajax = new AjaxRequest;
 require('General.js');
 const G = new General;
 require('Search.js');
-const G = new Search;
+const S = new Search;
 
 
 
@@ -27,11 +27,8 @@ $(".page-item").click(function(e){
     }
 });
 
-$('.search__product').keypress(function(e){
-    if (e.which == 65)
-    {
-        alert('Es wurde A gedrückt');
-    }
+$('.search__product').keyup(function(e){
+    S.doSearchRequest(e);
 });
 
 
