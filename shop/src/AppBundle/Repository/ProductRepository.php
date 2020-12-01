@@ -23,4 +23,16 @@ class ProductRepository extends EntityRepository
             )
             ->getResult();
     }
+
+    public function findByLimitAndPage($limit, $page = 1)
+    {
+        $offset = $limit * ($page - 1);
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:Product p'
+            )
+            ->setFirstResult( $offset )
+            ->setMaxResults( $limit )
+            ->getResult();
+    }
 }

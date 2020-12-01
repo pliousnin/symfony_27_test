@@ -5,13 +5,13 @@ namespace AppBundle\Helper;
 abstract class BaseHelper
 {
     protected $entityManager;
-//    private $container;
+    protected $container;
+    protected $request;
 
 
-//    public function __construct(ObjectManager $em, $container)
-    public function __construct($em)
+    public function __construct($em, $container)
     {
         $this->entityManager = $em;
-//        $this->container = $container;
+        $this->container = $container;
     }
 }

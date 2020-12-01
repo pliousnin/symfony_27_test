@@ -4,12 +4,29 @@ require('Alert.js');
 const A = new Alert;
 require('AjaxRequest.js');
 const Ajax = new AjaxRequest;
+require('General.js');
+const G = new General;
 
 
 $("#gen__100").click(function(){
-    A.alert('Bin dabei.');
     Ajax.json('gen__100');
+    location.reload();
 });
+
+$(".page-item").click(function(e){
+    if (
+        !(
+            $(e.currentTarget).hasClass('active') ||
+            $(e.currentTarget).hasClass('disabled')
+        )
+    ){
+        G.paging(e);
+    }
+
+});
+
+
+
 
 function require(script) {
     $.ajax({

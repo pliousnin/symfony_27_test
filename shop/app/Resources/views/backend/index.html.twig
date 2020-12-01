@@ -6,6 +6,23 @@
     <div class="jumbotron">
         <h1 class="display-4">Produkte</h1>
         <div class="row alert alert-dark margin__tb__8 sticky-top top__56">
+            {% if pages > 1 %}
+                <nav aria-label="navigation" class="col-12">
+                    <ul class="pagination justify-content-center">
+
+
+                        {% for i in 1..pages %}
+                            <li class="page-item {% if i == 1 %} active {% endif %}">
+                                <a class="page-link" href="#">
+                                    {{ i }}
+                                </a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </nav>
+            {% endif %}
+
             <div class="col-1">
                 Id
             </div>

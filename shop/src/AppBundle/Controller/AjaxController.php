@@ -1,8 +1,8 @@
 <?php
 namespace AppBundle\Controller;
 
-include_once '../src/AppBundle/Helper/ProductHelper.php';
-use AppBundle\Helper\ProductHelper;
+#include_once '../src/AppBundle/Helper/ProductHelper.php';
+#use AppBundle\Helper\ProductHelper;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,10 +21,21 @@ class AjaxController extends Controller
             return $this->redirect('/');
         }
         $action = $request->get('action');
+        $ajax = $this->container->get('app.ajax_helper');
 
-        $product = $this->container->get('product.helper');
-//        $product = new ProductHelper();
-        return new JsonResponse($product->genProducts());
+        switch ($action) {
+            case 'gen__100':
+                $response = $ajax->genProducts();
+                break;
+            case 'paging':
+                $response = $ajax->paging($request->get('page'));
+                break;
+            default:
+                $response = array('error' => 'No action');
+        }
+
+
+        return new JsonResponse($response);
     }
 
 

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BackendController extends Controller
 {
+
+    private $product_per_page = 10;
     /**
      * @Route("/backend", name="backend")
      */
@@ -17,8 +19,17 @@ class BackendController extends Controller
     {
         $product = new Product;
         $entityManager = $this->getDoctrine()->getManager();
+        $count_product = $entityManager->getRepository(Product::class)->createQueryBuilder('a')
+            ->select('count(a.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        $pages = ($count_product - ($count_product % Product::PRODUCT_PER_PAGE)) / Product::PRODUCT_PER_PAGE;
+        $pages++;
+
+
         $products = $entityManager->getRepository(Product::class)
-            ->findAll();
+            ->findByLimitAndPage(Product::PRODUCT_PER_PAGE);
 
         $productType = new ProductType;
         $form = $this->createForm($productType, $product);
@@ -43,6 +54,7 @@ class BackendController extends Controller
             #'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'form' => $form->createView(),
             'products' => $products,
+            'pages' => $pages,
         ));
     }
 

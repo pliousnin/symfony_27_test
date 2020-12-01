@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Product
 {
+    const PRODUCT_PER_PAGE = 10;
+
     /**
      * @return mixed
      */
