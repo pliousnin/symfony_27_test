@@ -6,6 +6,9 @@ require('AjaxRequest.js');
 const Ajax = new AjaxRequest;
 require('General.js');
 const G = new General;
+require('Search.js');
+const G = new Search;
+
 
 
 $("#gen__100").click(function(){
@@ -22,7 +25,13 @@ $(".page-item").click(function(e){
     ){
         G.paging(e);
     }
+});
 
+$('.search__product').keypress(function(e){
+    if (e.which == 65)
+    {
+        alert('Es wurde A gedrückt');
+    }
 });
 
 

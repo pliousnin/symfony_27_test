@@ -17,6 +17,10 @@ services:
         class: AppBundle\Helper\AjaxHelper
         parent: app.base_helper
 
+    app.search_helper:
+        class: AppBundle\Helper\SearchHelper
+        parent: app.base_helper
+
 
     #service_name:
     #    class: AppBundle\Directory\ClassName
