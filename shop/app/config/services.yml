@@ -20,6 +20,7 @@ services:
     app.search_helper:
         class: AppBundle\Helper\SearchHelper
         parent: app.base_helper
+        shared: false
 
 
     #service_name:
