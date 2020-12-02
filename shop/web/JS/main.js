@@ -15,6 +15,9 @@ $("#gen__100").click(function(){
     Ajax.json('gen__100');
     location.reload();
 });
+$("#update__cron").click(function(){
+    Ajax.json('',{}, 0, 'update');
+});
 
 $(".page-item").click(function(e){
     if (

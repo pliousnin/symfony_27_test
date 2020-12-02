@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Entity/Product.php
+// src/AppBundle/Entity/Search.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

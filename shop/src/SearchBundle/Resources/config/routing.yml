@@ -8,3 +8,8 @@ search.search:
     defaults: { _controller: 'SearchBundle:Search:search' }
     methods: [ 'POST' ]
 
+search.update:
+    path: '/update'
+    defaults: { _controller: 'SearchBundle:Update:update' }
+    methods: [ 'POST' ]
+

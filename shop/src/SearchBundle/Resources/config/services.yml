@@ -13,3 +13,7 @@ services:
         class: SearchBundle\Helper\SearchHelper
         parent: search.base_helper
         shared: false
+
+    search.update_helper:
+        class: SearchBundle\Helper\UpdateHelper
+        parent: search.base_helper

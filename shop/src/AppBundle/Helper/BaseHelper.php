@@ -6,7 +6,6 @@ abstract class BaseHelper
 {
     protected $entityManager;
     protected $container;
-    protected $request;
 
 
     public function __construct($em, $container)
