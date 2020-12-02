@@ -1,0 +1,15 @@
+services:
+#    search.example:
+#        class: SearchBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    search.base_helper:
+        # as no class is configured, the parent service MUST be abstract
+        abstract: true
+        arguments: [ '@doctrine.orm.entity_manager' , '@service_container' ]
+
+    search.search_helper:
+        class: SearchBundle\Helper\SearchHelper
+        parent: search.base_helper
+        shared: false

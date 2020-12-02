@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AjaxController extends Controller
 {
+
     /**
      * @Route("/ajax", name="ajax")
      */

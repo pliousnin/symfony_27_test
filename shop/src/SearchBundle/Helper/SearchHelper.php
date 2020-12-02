@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Helper;
+namespace SearchBundle\Helper;
 
 use AppBundle\Entity\Product;
 use AppBundle\Helper\BaseHelper;

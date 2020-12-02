@@ -1,0 +1,10 @@
+search:
+    resource: '@SearchBundle/Controller/'
+    prefix: '/'
+    type: annotation
+
+search.search:
+    path: '/search'
+    defaults: { _controller: 'SearchBundle:Search:search' }
+    methods: [ 'POST' ]
+
