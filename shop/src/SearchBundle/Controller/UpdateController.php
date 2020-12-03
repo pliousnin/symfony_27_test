@@ -14,10 +14,10 @@ class UpdateController extends Controller
         if (!$request->isXmlHttpRequest()) {
             return $this->redirect('/');
         }
-var_dump('test');die();
+
         $update = $this->container->get('search.update_helper');
 
-        $response = $update->createSearchEntity();
+        $response = $update->fillSearchEntity();
 
         return new JsonResponse($response);
     }

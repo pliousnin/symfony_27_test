@@ -10,8 +10,18 @@ class SearchRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM AppBundle:Product p ORDER BY p.name ASC'
+                'SELECT p FROM SearchBundle:Search p ORDER BY p.name ASC'
             )
+            ->getResult();
+    }
+    public function findByJsonLike($q)
+    {
+        return $this->getEntityManager()
+            ->getRepository("SearchBundle:Search")
+            ->createQueryBuilder('s')
+            ->where('s.json like :q')
+            ->setParameter('q', '%' . $q . '%')
+            ->getQuery()
             ->getResult();
     }
 
