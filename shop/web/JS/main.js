@@ -37,6 +37,7 @@ $('.search__product').keyup(function(e){
 
 
 
+
 function require(script) {
     $.ajax({
         url: 'JS/' + script,
