@@ -25,7 +25,6 @@ class Search{
         }
         $('.search__product').after(e.html);
         var top = 20 + $('.search__result')[0].offsetHeight / 2;
-        var top = 166;
 
         $('.search__result').css({'transform' : 'translate(-240px, ' + top + 'px)'});
 
