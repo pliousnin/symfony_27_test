@@ -19,8 +19,9 @@ class ProductRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM AppBundle:Product p TOP 1'
+                'SELECT p FROM AppBundle:Product p'
             )
+            ->setMaxResults(1)
             ->getResult();
     }
 
@@ -34,5 +35,22 @@ class ProductRepository extends EntityRepository
             ->setFirstResult( $offset )
             ->setMaxResults( $limit )
             ->getResult();
+    }
+
+    public function findByIds(array $ids)
+    {
+        $repo = $this->getEntityManager()
+            ->getRepository("AppBundle:Product")
+            ->createQueryBuilder('p');
+        for ($i = 0; $i < count($ids); $i++){
+            $index = 'q' . $i;
+            if ($i === 0){
+                $repo->where('p.id = :' . $index)->setParameter($index, $ids[$i]);
+            }else{
+                $repo->orWhere('p.id = :' . $index)->setParameter($index, $ids[$i]);
+            }
+        }
+
+        return $repo->getQuery()->getResult();
     }
 }

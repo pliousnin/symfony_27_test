@@ -2,9 +2,16 @@
     margin-top: 8px;
     margin-bottom: 8px;
 }
+.margin__tb__16{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
 .width__full{
     width: 100%;
 }
 .top__56{
     top: 56px;
+}
+.max__width__100{
+    max-width: 100%;
 }

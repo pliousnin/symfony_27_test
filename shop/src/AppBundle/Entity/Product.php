@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Product
 {
     const PRODUCT_PER_PAGE = 10;
+    const HOMEPAGE_PRODUCTS = array(2, 5, 8, 12, 34, 45, 46, 48);
 
     /**
      * @return mixed
